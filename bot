@@ -1,0 +1,75 @@
+%valores inciales
+lc='si';
+li='no';
+mc='si';
+mi='no';
+gr='grupal';
+disp('Hola soy Sally tu asesor educativo, por favor incia sesión')
+login=input('¿Usuario y contraseña correctos?: ','s');
+cl = strcmp(login,lc);
+while cl ~= 1
+    fprintf('Usuario y/o contraseña incorrecta, intenta de nuevo\n')
+    login=input('¿Usuario y contraseña correctos?: ','s');
+    cl = strcmp(login,lc);
+end
+disp('Bienvenido al servicio de ayuda @usario');
+help=input('¿Alguna duda con tus materias?: ','s');
+ch = strcmp(help,mc);
+if ch == 1
+    fprintf('Selecciona la materia a consultar\n');
+    m=input('materia: ','s');
+    fprintf('Bienvenido al apartado de ayuda de %s\n',m);
+else
+    a=input('¿Necesitas asesoria?: ','s');
+    as = strcmp(a,lc);
+    if as == 1
+        fprintf('Selecciona la materia para recibir ayuda\n');
+        m=input('Materia: ','s');
+        g=input('¿Individual o grupal?: ','s');
+        as = strcmp(g,gr);
+        if as == 1
+            um=input('Escribe los usarios para recibir asesoria: ','s');
+        end
+        fc=input('Selecciona la fecha en la que te gustaria recibir asesoria: ','s');
+        dis=input('¿Horario disponible?: ','s');
+        dp=strcmp(dis,lc);
+        while dp ~=1
+            fprintf('Sorry :( No esta disponible este horario en la fecha seleccionada, escoge otro\n');
+            clear dis;
+            clear dp;
+            fc=input('Selecciona la fecha en la que te gustaria recibir asesoria: ','s');
+            dis=input('¿Horario disponible?: ','s');
+            dp=strcmp(dis,lc);
+        end
+        fprintf('Este horario se encuentra disponible ;) ¿Estas de acuerdo?\n');
+        dec=input('','s');
+        dd=strcmp(dec,lc);
+        while dd ~= 1
+            fc=input('Muy bien seleccionemos otra fecha: ','s');
+            dis=input('¿Horario disponible?: ','s');
+            dp=strcmp(dis,lc);
+            while dp~= 1
+                fprintf('Sorry :( No esta disponible este horario en la fecha seleccionada, escoge otro\n');
+                fc=input('Selecciona la fecha en la que te gustaria recibir asesoria: ','s');
+                dis=input('¿Horario disponible?: ','s');
+                dp=strcmp(dis,lc);
+            end
+            fprintf('Este horario se encuentra disponible :D ¿Estas de acuerdo?\n');
+            dec=input('','s');
+            dd=strcmp(dec,lc);
+        end
+        fprintf('Muy bien te esperamos en este horario para la asesoria de %s',m);
+    else
+        md=input('¿Necesitas material didactico?: ','s');
+        ma=strcmp(md,lc);
+        if ma == 1
+            mat=input('Selecciona la materia para recibir el material didactico: ','s');
+            tem=input('Selecciona el tema: ','s');
+            fprintf('Para %s tenemos los siguientes enlaces de materiales\n',tem);
+            fprintf('links de %s 1 \n links de %s 2',tem);
+        else 
+            fprintf('Gracias por utilizar Sally, vuelve pronto\n');
+        end 
+        
+    end 
+end
